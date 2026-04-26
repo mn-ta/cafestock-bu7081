@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+.streamlit/secrets.toml
+*.docx
+*.xlsx
+report/
+report_drafts/
+screenshots/
+build_docx.py
+capture_screenshots.py
