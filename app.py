@@ -120,10 +120,17 @@ def page_demand_explorer(df: pd.DataFrame):
     summary = perishable_summary(df, store)
     st.markdown("**Per-product daily demand profile**")
     st.dataframe(
-        summary.style.background_gradient(
-            subset=["coef_variation"], cmap="Reds"
-        ),
+        summary,
         use_container_width=True,
+        column_config={
+            "coef_variation": st.column_config.ProgressColumn(
+                "coef_variation",
+                help="Std / mean of daily demand. Higher means more volatile.",
+                format="%.2f",
+                min_value=0.0,
+                max_value=1.0,
+            ),
+        },
     )
     st.caption(
         "A coefficient of variation above 0.5 signals that average ordering "
